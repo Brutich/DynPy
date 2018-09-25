@@ -195,9 +195,9 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
       "NodeType": "InputNode",
       "Parameter": {
-        "Name": "document: System.Object",
-        "TypeName": "var",
-        "TypeRank": -1,
+        "Name": "document",
+        "TypeName": "System.Object",
+        "TypeRank": 0,
         "DefaultValue": null,
         "Description": ""
       },
@@ -223,7 +223,7 @@
       "Parameter": {
         "Name": "element",
         "TypeName": "Revit.Elements.Element",
-        "TypeRank": -1,
+        "TypeRank": 1,
         "DefaultValue": null,
         "Description": ""
       },
@@ -385,15 +385,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 525404.75919542846,
-      "EyeY": 319831.20033752493,
-      "EyeZ": 413900.60125894292,
-      "LookX": -498319.784040996,
-      "LookY": -407490.93826053332,
-      "LookZ": -587377.55134549446,
-      "UpX": -0.17288486364931144,
-      "UpY": 0.96363045320863128,
-      "UpZ": -0.20378217186472003
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
     },
     "NodeViews": [
       {
@@ -433,8 +433,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 61.0,
-        "Y": 293.0
+        "X": 522.230683330885,
+        "Y": 181.66845574771742
       },
       {
         "ShowGeometry": true,
@@ -453,8 +453,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -124.0,
-        "Y": 420.0
+        "X": -120.02387341956137,
+        "Y": -96.896455457026747
       },
       {
         "ShowGeometry": true,
@@ -498,8 +498,8 @@
       }
     ],
     "Annotations": [],
-    "X": 338.58898771898316,
-    "Y": 148.00182833436469,
+    "X": 375.58898771898316,
+    "Y": 280.00182833436469,
     "Zoom": 1.0060041900272456
   }
 }
