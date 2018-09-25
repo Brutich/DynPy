@@ -1,0 +1,168 @@
+{
+  "Uuid": "2c785c44-4efa-40ec-98a4-9677c1442172",
+  "IsCustomNode": true,
+  "Category": "JetPack X.Revit",
+  "Description": "Open document by file path",
+  "Name": "Application.OpenDocumentFile",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Autodesk.Revit.DB.Document": {
+        "Key": "Autodesk.Revit.DB.Document",
+        "Value": null
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nclr.AddReference(\"RevitAPIUI\")\r\nfrom Autodesk.Revit.DB import *\r\n\r\n# Document from file path\r\nuiapp = DocumentManager.Instance.CurrentUIApplication\r\napp = uiapp.Application\r\nfilePath = FilePath(IN[0])\r\noptions = OpenOptions()\r\n\r\ndocFromPath = app.OpenDocumentFile(filePath, options)\r\n\r\nOUT = docFromPath",
+      "VariableInputPorts": true,
+      "Id": "e96b5d7b884e47c58d8f68e923b3d0ee",
+      "Inputs": [
+        {
+          "Id": "a89641bd115542788d1569917bde2859",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2632352b5df1401eba2322b3b4923dfd",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "filePath",
+        "TypeName": "string",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": "File Path"
+      },
+      "Id": "162fee06141e4f77ba4287ec5f382692",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3a6f2d6c4918477ea54cbe90d6df6eee",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "Document",
+      "Id": "e7e9e4cc5dc3427eb07d6a481846d53a",
+      "Inputs": [
+        {
+          "Id": "7504a26f8c924ecb857db42a76f11c80",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "2632352b5df1401eba2322b3b4923dfd",
+      "End": "7504a26f8c924ecb857db42a76f11c80",
+      "Id": "eccf965cc2dc4b30bf7091e3c91b239a"
+    },
+    {
+      "Start": "3a6f2d6c4918477ea54cbe90d6df6eee",
+      "End": "a89641bd115542788d1569917bde2859",
+      "Id": "4907ea0e65d34fb8969b3eeeac98c5e1"
+    }
+  ],
+  "Dependencies": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.1.5055",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "e96b5d7b884e47c58d8f68e923b3d0ee",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 558.12230110655855,
+        "Y": 13.455936633626663
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "162fee06141e4f77ba4287ec5f382692",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 332.5875788795758,
+        "Y": 15.402308911070094
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "e7e9e4cc5dc3427eb07d6a481846d53a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 767.1021993404363,
+        "Y": 14.280980858267924
+      }
+    ],
+    "Annotations": [],
+    "X": -4.2029936260548766,
+    "Y": 334.52845164699221,
+    "Zoom": 1.7835993623828124
+  }
+}

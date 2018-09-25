@@ -1,46 +1,22 @@
 {
   "Uuid": "52b9d7ca-1afe-4973-856a-5bdf7eff6a18",
   "IsCustomNode": true,
-  "Category": "JetPack.Elements",
+  "Category": "JetPack.Revit.Elements",
   "Description": "Selecting elements in the entire Revit document",
   "Name": "Element.SetSelection",
   "ElementResolver": {
     "ResolutionMap": {
-      "Points.X": {
-        "Key": "Geometry.Points",
-        "Value": "LunchBox.dll"
+      "Autodesk.Revit.DB.Document": {
+        "Key": "Autodesk.Revit.DB.Document",
+        "Value": null
       },
-      "Math": {
-        "Key": "DSCore.Math",
-        "Value": "DSCoreNodes.dll"
-      },
-      "DSCore.List": {
-        "Key": "DSCore.List",
-        "Value": "DSCoreNodes.dll"
-      },
-      "DSCore.List.GetItemAtIndex": {
-        "Key": "DSCore.List",
-        "Value": "DSCoreNodes.dll"
-      },
-      "Revit.Element.SetParameterByName": {
-        "Key": "Revit.Elements.Element",
-        "Value": "RevitNodes.dll"
-      },
-      "Revit.Element": {
-        "Key": "Revit.Elements.Element",
-        "Value": "RevitNodes.dll"
-      },
-      "Revit.Elements.Element.SetParameterByName": {
-        "Key": "Revit.Elements.Element",
-        "Value": "RevitNodes.dll"
+      "System.Type": {
+        "Key": "System.Type",
+        "Value": null
       },
       "Revit.Elements.Element": {
         "Key": "Revit.Elements.Element",
         "Value": "RevitNodes.dll"
-      },
-      "RevitElements.Element": {
-        "Key": "RevitElements.Element",
-        "Value": "Rhythm.dll"
       }
     }
   },
@@ -232,7 +208,7 @@
       "NodeType": "InputNode",
       "Parameter": {
         "Name": "element",
-        "TypeName": "var",
+        "TypeName": "Revit.Elements.Element",
         "TypeRank": -1,
         "DefaultValue": null,
         "Description": ""
@@ -317,8 +293,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -552.97193087169148,
-        "Y": -410.82655755744662
+        "X": 10.0,
+        "Y": -85.0
       },
       {
         "ShowGeometry": true,
@@ -327,18 +303,18 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -253.26627482381082,
-        "Y": -410.82655755744662
+        "X": 299.0,
+        "Y": -81.0
       },
       {
         "ShowGeometry": true,
-        "Name": "Select Elems",
+        "Name": "Python Script",
         "Id": "a22b317ae579450c97e140f3ca349f2d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -68.942830579350812,
-        "Y": -410.82655755744662
+        "X": 491.0,
+        "Y": -83.0
       },
       {
         "ShowGeometry": true,
@@ -347,8 +323,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 83.9672221346666,
-        "Y": -410.82655755744662
+        "X": 640.0,
+        "Y": -81.0
       },
       {
         "ShowGeometry": true,
@@ -357,8 +333,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -691.10911891720536,
-        "Y": -290.36565550509567
+        "X": -153.0,
+        "Y": 32.0
       },
       {
         "ShowGeometry": true,
@@ -367,8 +343,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -844.59520901580186,
-        "Y": -410.82655755744662
+        "X": -257.0,
+        "Y": -85.0
       },
       {
         "ShowGeometry": true,
@@ -377,13 +353,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1076.7399688941989,
-        "Y": -410.82655755744662
+        "X": -628.0,
+        "Y": -88.0
       }
     ],
     "Annotations": [],
-    "X": 1052.1476316102217,
-    "Y": 608.06735217355754,
-    "Zoom": 0.82346593254104916
+    "X": 772.0,
+    "Y": 275.0,
+    "Zoom": 1.0
   }
 }

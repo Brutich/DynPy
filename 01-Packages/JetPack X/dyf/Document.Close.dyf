@@ -1,0 +1,173 @@
+{
+  "Uuid": "4305c935-3f4c-4f11-bb55-76c55430e27b",
+  "IsCustomNode": true,
+  "Category": "JetPack X.Revit.Application",
+  "Description": "Save and close document",
+  "Name": "Document.Close",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "System.Object": {
+        "Key": "System.Object",
+        "Value": null
+      },
+      "Revit.Elements.Element": {
+        "Key": "Revit.Elements.Element",
+        "Value": "RevitNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Copyright(c) 2018, Oleg (Brutich) Zholobov\r\n# @JetPack, http://www.Oleg-Zholobov.com\r\n\r\nimport clr\r\n\r\n# Import DocumentManager\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\n# Import RevitAPI\r\nclr.AddReference(\"RevitAPI\")\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\ndoc = UnwrapElement(IN[0])\r\nreport = ''\r\n\r\ntry:\r\n\tdoc.Close()\r\n\treport = \"Successfully\"\r\nexcept Exception as e:\r\n\treport = \"Error: {0}\".format(e)\r\n\t\r\nOUT = report",
+      "VariableInputPorts": true,
+      "Id": "bcf419b855554e509e24fa2693ea013a",
+      "Inputs": [
+        {
+          "Id": "f3d5493e223f4610b4c489cb912f7973",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9aff7c5ec42d48098180c0afb7317904",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "document",
+        "TypeName": "System.Object",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": "Document for save and close"
+      },
+      "Id": "f4b689ea3a6d4737a3d4f05093b7d267",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f298996fde04461bad1c8d4cc88251cd",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "Report",
+      "Id": "3cfd6d1513ec4c96ba84ab5d8d1eaa00",
+      "Inputs": [
+        {
+          "Id": "9b15ca3c6b52424588bb9458259a909d",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9aff7c5ec42d48098180c0afb7317904",
+      "End": "9b15ca3c6b52424588bb9458259a909d",
+      "Id": "a708e45c7726448a8e5c2238a1cf9ca3"
+    },
+    {
+      "Start": "f298996fde04461bad1c8d4cc88251cd",
+      "End": "f3d5493e223f4610b4c489cb912f7973",
+      "Id": "8230382b56514af79849ef79e424beef"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.1.5055",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "bcf419b855554e509e24fa2693ea013a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "f4b689ea3a6d4737a3d4f05093b7d267",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -75.1289795377487,
+        "Y": 0.56066402640112756
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "3cfd6d1513ec4c96ba84ab5d8d1eaa00",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 449.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 553.54291101487433,
+    "Y": 398.80638469718747,
+    "Zoom": 1.7835993623828124
+  }
+}

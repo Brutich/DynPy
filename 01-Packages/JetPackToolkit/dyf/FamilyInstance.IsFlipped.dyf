@@ -1,30 +1,14 @@
 {
   "Uuid": "2c730d1b-5f35-4492-b1a1-a146d7b43b4d",
   "IsCustomNode": true,
-  "Category": "JetPack.Elements",
+  "Category": "JetPack.Revit.Elements",
   "Description": "Determines the if the given family Instances are flipped. Can be used for set door handing.",
   "Name": "FamilyInstance.IsFlipped",
   "ElementResolver": {
     "ResolutionMap": {
-      "Revit.Element": {
-        "Key": "Revit.Elements.Element",
-        "Value": "RevitNodes.dll"
-      },
-      "Math": {
-        "Key": "DSCore.Math",
-        "Value": "DSCoreNodes.dll"
-      },
-      "Revit.Elements.Element": {
-        "Key": "Revit.Elements.Element",
-        "Value": "RevitNodes.dll"
-      },
-      "FamilyInstance": {
-        "Key": "Revit.Elements.FamilyInstance",
-        "Value": "RevitNodes.dll"
-      },
-      "Revit.Elements.FamilyInstance": {
-        "Key": "Revit.Elements.FamilyInstance",
-        "Value": "RevitNodes.dll"
+      "Autodesk.Revit.DB.Document": {
+        "Key": "Autodesk.Revit.DB.Document",
+        "Value": null
       }
     }
   },
@@ -34,7 +18,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\nclr.AddReference(\"RevitNodes\")\nimport Revit\nclr.ImportExtensions(Revit.Elements)\n\n#input assigned the IN variable\nelement = list(UnwrapElement(IN[0]))\n\n#output assigned the OUT variable\nOUT = [ (True if elem.FacingFlipped else False) for elem in element ]",
+      "Code": "import clr\nclr.AddReference(\"RevitNodes\")\nimport Revit\nclr.ImportExtensions(Revit.Elements)\n\n#input assigned the IN variable\nelement = UnwrapElement(IN[0])\n\n#output assigned the OUT variable\nOUT = element.FacingFlipped",
       "VariableInputPorts": true,
       "Id": "d2616047b34b4908a63f6cff3968e67a",
       "Inputs": [
@@ -104,7 +88,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\nclr.AddReference(\"RevitNodes\")\nimport Revit\nclr.ImportExtensions(Revit.Elements)\n\n#input assigned the IN variable\nelement = list(UnwrapElement(IN[0]))\n\n#output assigned the OUT variable\nOUT = [ (True if elem.HandFlipped else False) for elem in element ]",
+      "Code": "import clr\nclr.AddReference(\"RevitNodes\")\nimport Revit\nclr.ImportExtensions(Revit.Elements)\n\n#input assigned the IN variable\nelement = UnwrapElement(IN[0])\n\n#output assigned the OUT variable\nOUT = element.HandFlipped",
       "VariableInputPorts": true,
       "Id": "5f1a7194560f4eb787c759f894b42df7",
       "Inputs": [
@@ -138,7 +122,7 @@
       "Parameter": {
         "Name": "familyInstance",
         "TypeName": "Revit.Elements.FamilyInstance",
-        "TypeRank": -1,
+        "TypeRank": 0,
         "DefaultValue": null,
         "Description": ""
       },
@@ -233,13 +217,13 @@
     "NodeViews": [
       {
         "ShowGeometry": true,
-        "Name": "FacingFlipped",
+        "Name": "Python Script",
         "Id": "d2616047b34b4908a63f6cff3968e67a",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 41.36262523950387,
-        "Y": 151.26316422757554
+        "X": -188.0,
+        "Y": 308.0
       },
       {
         "ShowGeometry": true,
@@ -248,18 +232,18 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 301.36398415840665,
-        "Y": 13.590039603983342
+        "X": 26.0,
+        "Y": 243.0
       },
       {
         "ShowGeometry": true,
-        "Name": "HandFlipped",
+        "Name": "Python Script",
         "Id": "5f1a7194560f4eb787c759f894b42df7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 40.706021185688314,
-        "Y": 14.7650529642209
+        "X": -187.0,
+        "Y": 247.0
       },
       {
         "ShowGeometry": true,
@@ -268,8 +252,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -524.857009903454,
-        "Y": 16.828566996781831
+        "X": -651.0,
+        "Y": 250.0
       },
       {
         "ShowGeometry": true,
@@ -278,13 +262,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 673.38661255411716,
-        "Y": 11.167545609158879
+        "X": 210.0,
+        "Y": 245.0
       }
     ],
     "Annotations": [],
-    "X": 635.68130850365071,
-    "Y": 234.04999750281536,
-    "Zoom": 1.0606077223602066
+    "X": 811.0,
+    "Y": -41.0,
+    "Zoom": 1.0
   }
 }
