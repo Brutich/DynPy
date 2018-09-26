@@ -161,11 +161,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "si[0];\nsi[1];",
+      "Code": "si[0];\nsi[1];\nsi[2];",
       "Id": "e69edcfed39b4acc95ad57ab470b14a0",
       "Inputs": [
         {
-          "Id": "0fb8e2ee9327453ba880e351257e5b52",
+          "Id": "69ec4592bd20463884d9661f5b3eec7a",
           "Name": "si",
           "Description": "si",
           "UsingDefaultValue": false,
@@ -176,7 +176,7 @@
       ],
       "Outputs": [
         {
-          "Id": "44162bab5b6347cb9f498dad1c2e4d37",
+          "Id": "81d42040d4914e308170ec460379c4d7",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -185,9 +185,18 @@
           "KeepListStructure": false
         },
         {
-          "Id": "598676dcad724eeb9423448905df2287",
+          "Id": "b65ce78bdd134b3789157afa851e7218",
           "Name": "",
           "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b4ca549a3c404330b0c358956b0c1513",
+          "Name": "",
+          "Description": "Value of expression at line 3",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -200,7 +209,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Enable Python support and load DesignScript library\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Import DocumentManager and TransactionManager\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\n# Import RevitAPI\r\nclr.AddReference(\"RevitAPI\")\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\ndoc = UnwrapElement(IN[1])\r\n\r\nwallType = UnwrapElement(IN[0])\r\nstructure = wallType.GetCompoundStructure()\r\nlayerCount = structure.LayerCount\r\nfirstCoreLayerInd = structure.GetLastCoreLayerIndex()\r\nlastCoreLayerInd = structure.GetFirstCoreLayerIndex()\r\nstrMaterialInd = structure.StructuralMaterialIndex\r\n\r\nlayerFunctions = []\r\nlayerMaterials = []\r\nlayerThicknesses = []\r\nwrappingLayers = []\r\nisStructuralLayers = []\r\nisFirstCoreLayer = []\r\n\r\nfor i in range(layerCount):\r\n\tlayerFunctions.append(structure.GetLayerFunction(i))\r\n\tlayerMaterials.append(doc.GetElement(structure.GetMaterialId(i)))\r\n\tlayerThicknesses.append(structure.GetLayerWidth(i) * 304.8)\r\n\twrappingLayers.append(structure.ParticipatesInWrapping(i))\r\n\tisStructuralLayers.append(i == strMaterialInd)\r\n\tisFirstCoreLayer.append(i == firstCoreLayerInd)\r\n\r\nkeys = ('Function', 'Material', 'Thickness', 'Is Structural', 'Is First Core Layer')\r\nvalues = (layerFunctions, layerMaterials, layerThicknesses, isStructuralLayers, isFirstCoreLayer)\r\n\r\nOUT = keys, values",
+      "Code": "# Enable Python support and load DesignScript library\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Import DocumentManager and TransactionManager\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\n# Import RevitAPI\r\nclr.AddReference(\"RevitAPI\")\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\ndoc = UnwrapElement(IN[1])\r\n\r\nwallType = UnwrapElement(IN[0])\r\nstructure = wallType.GetCompoundStructure()\r\nlayerCount = structure.LayerCount\r\nfirstCoreLayerInd = structure.GetLastCoreLayerIndex()\r\nlastCoreLayerInd = structure.GetFirstCoreLayerIndex()\r\nstrMaterialInd = structure.StructuralMaterialIndex\r\n\r\nlayerFunctions = []\r\nlayerMaterials = []\r\nlayerThicknesses = []\r\nwrappingLayers = []\r\nisStructuralLayers = []\r\nisFirstCoreLayer = []\r\n\r\nfor i in range(layerCount):\r\n\tlayerFunctions.append(structure.GetLayerFunction(i))\r\n\tlayerMaterials.append(doc.GetElement(structure.GetMaterialId(i)))\r\n\tlayerThicknesses.append(structure.GetLayerWidth(i) * 304.8)\r\n\twrappingLayers.append(structure.ParticipatesInWrapping(i))\r\n\tisStructuralLayers.append(i == strMaterialInd)\r\n\tisFirstCoreLayer.append(i == firstCoreLayerInd)\r\n\r\nkeys = ('Function', 'Material', 'Thickness', 'Is Structural', 'Is First Core Layer')\r\nvalues = (layerFunctions, layerMaterials, layerThicknesses, isStructuralLayers, isFirstCoreLayer)\r\n\r\nOUT = keys, values, doc",
       "VariableInputPorts": true,
       "Id": "ba4136871ad94997ae339a6dee805f96",
       "Inputs": [
@@ -309,6 +318,27 @@
       ],
       "Replication": "Disabled",
       "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "Document",
+      "Id": "4955af221d374c3194801578e9bdcdd4",
+      "Inputs": [
+        {
+          "Id": "942e0f9e833b4963bf605e44f71a8d94",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
     }
   ],
   "Connectors": [
@@ -328,19 +358,24 @@
       "Id": "189044fca7204ed7aab432688edd0091"
     },
     {
-      "Start": "44162bab5b6347cb9f498dad1c2e4d37",
+      "Start": "81d42040d4914e308170ec460379c4d7",
       "End": "0bd90335d2194289988c2c3c10c786ef",
-      "Id": "ef6fcc4598094709b41d801a875780ff"
+      "Id": "c6188fa015084695adde4b2bebe000d5"
     },
     {
-      "Start": "598676dcad724eeb9423448905df2287",
+      "Start": "b65ce78bdd134b3789157afa851e7218",
       "End": "4e73bef1583a4448944f0771d0126cb2",
-      "Id": "c2c8f892f731439886a0cf623aeb14ad"
+      "Id": "bd16a2c80a134300aba91e40dd42d37e"
+    },
+    {
+      "Start": "b4ca549a3c404330b0c358956b0c1513",
+      "End": "942e0f9e833b4963bf605e44f71a8d94",
+      "Id": "01ab10a9fa9e4fb5962527797435a641"
     },
     {
       "Start": "7878ee50a9d74463b94cdc6006d5bfcb",
-      "End": "0fb8e2ee9327453ba880e351257e5b52",
-      "Id": "e689fce10eca4014bac286fefa66421e"
+      "End": "69ec4592bd20463884d9661f5b3eec7a",
+      "Id": "349a732bc0c94b1ab940dcd2e098e144"
     },
     {
       "Start": "a3b3beeaa26e4acfb93ac38c62e414c4",
@@ -414,8 +449,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 860.664018894524,
-        "Y": 6.0
+        "X": 838.17005095899412,
+        "Y": 5.0627513360195735
       },
       {
         "ShowGeometry": true,
@@ -424,8 +459,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 691.92594277516,
-        "Y": 0.690380596824298
+        "X": 591.49694574681484,
+        "Y": 0.69038059682429775
       },
       {
         "ShowGeometry": true,
@@ -434,8 +469,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 331.950174216815,
-        "Y": 1.30218905414526
+        "X": 231.52117718846978,
+        "Y": 1.3021890541452592
       },
       {
         "ShowGeometry": true,
@@ -444,8 +479,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1480.05180454093,
-        "Y": 0.0606750546995727
+        "X": 1505.9433331750051,
+        "Y": 0.060675054699572684
       },
       {
         "ShowGeometry": true,
@@ -454,13 +489,23 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 328.26967173288125,
+        "X": 227.840674704536,
         "Y": 88.5061022651158
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "4955af221d374c3194801578e9bdcdd4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1560.4368086103868,
+        "Y": 172.37304048136423
       }
     ],
     "Annotations": [],
-    "X": -178.99530842120271,
-    "Y": 283.71859422226214,
-    "Zoom": 0.96556678260774231
+    "X": -485.48550460360559,
+    "Y": 260.43377394534912,
+    "Zoom": 1.0669527078898016
   }
 }
