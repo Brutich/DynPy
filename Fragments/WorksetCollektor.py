@@ -10,7 +10,7 @@ from RevitServices.Persistence import DocumentManager
 doc = UnwrapElement(IN[0])
 worksetTable = doc.GetWorksetTable()
 
-ws_coll = FilteredWorksetCollector(doc);
+ws_coll = FilteredWorksetCollector(doc)
 ws_kindes = [ws.Kind for ws in ws_coll]
 ws_names = [ws.Name for ws in ws_coll]
 ws_ids = [ws.Id for ws in ws_coll]
