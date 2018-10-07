@@ -95,7 +95,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\nclr.AddReference(\"RevitAPI\")\r\nclr.AddReference(\"RevitAPIUI\")\r\nimport Autodesk\r\nfrom Autodesk.Revit.UI import *\r\nfrom Autodesk.Revit.DB import *\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit\r\n# clr.ImportExtensions(Revit.Elements)\r\nfrom System.Collections.Generic import *\r\n\r\nelems = UnwrapElement(IN[0])\r\n\r\nelemIds = []\r\nnErrors = 0\r\n\r\nfor elem in elems:\r\n\ttry:\r\n\t\telemIds.append(elem.Id)\r\n\texcept AttributeError:\r\n\t\tnErrors += 1\r\n\t\tpass\r\n \t\r\nuidoc = DocumentManager.Instance.CurrentUIDocument\r\nuidoc.Selection.SetElementIds(List[ElementId](elemIds))\r\n\r\n# Just for fun - give it to the output!\r\nOUT = \"{0} selected elements, {1} errors\".format(len(elemIds), nErrors)\r\n",
+      "Code": "import clr\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\n\r\nclr.AddReference(\"RevitAPI\")\r\nclr.AddReference(\"RevitAPIUI\")\r\nimport Autodesk\r\nfrom Autodesk.Revit.UI import *\r\nfrom Autodesk.Revit.DB import *\r\n\r\nfrom System.Collections.Generic import *\r\n\r\n\r\nelems = UnwrapElement(IN[0])\r\n\r\nelemIds = []\r\nnErrors = 0\r\n\r\nfor elem in elems:\r\n\ttry:\r\n\t\telemIds.append(elem.Id)\r\n\texcept AttributeError:\r\n\t\tnErrors += 1\r\n\t\tpass\r\n \t\r\nuidoc = DocumentManager.Instance.CurrentUIDocument\r\nuidoc.Selection.SetElementIds(List[ElementId](elemIds))\r\n\r\n# Just for fun - give it to the output!\r\nOUT = \"{0} selected elements, {1} errors\".format(len(elemIds), nErrors)\r\n",
       "VariableInputPorts": true,
       "Id": "a22b317ae579450c97e140f3ca349f2d",
       "Inputs": [
@@ -358,8 +358,8 @@
       }
     ],
     "Annotations": [],
-    "X": 772.0,
-    "Y": 275.0,
-    "Zoom": 1.0
+    "X": 458.14567581741403,
+    "Y": 290.43559847716438,
+    "Zoom": 0.82770257044119022
   }
 }
