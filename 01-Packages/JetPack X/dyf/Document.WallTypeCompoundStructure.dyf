@@ -1,7 +1,7 @@
 {
   "Uuid": "707d2bd0-30c2-47c9-8d5e-62f0de14490b",
   "IsCustomNode": true,
-  "Category": "JetPack X.Revit.Application",
+  "Category": "JetPack X.Revit.Application.Query",
   "Description": "",
   "Name": "Document.WallTypeCompoundStructure",
   "ElementResolver": {
@@ -389,7 +389,6 @@
     }
   ],
   "Dependencies": [],
-  "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
@@ -419,8 +418,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 981.83135471675439,
-        "Y": 105.09458805840518
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -429,7 +428,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1220.66401889452,
+        "X": 0.0,
         "Y": 0.0
       },
       {
@@ -439,8 +438,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1031.7111729163018,
-        "Y": 5.8570939326314146
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -449,8 +448,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 838.17005095899412,
-        "Y": 5.0627513360195735
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -459,8 +458,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 591.49694574681484,
-        "Y": 0.69038059682429775
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -469,8 +468,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 231.52117718846978,
-        "Y": 1.3021890541452592
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -479,8 +478,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1505.9433331750051,
-        "Y": 0.060675054699572684
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -489,8 +488,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 227.840674704536,
-        "Y": 88.5061022651158
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -499,13 +498,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1560.4368086103868,
-        "Y": 172.37304048136423
+        "X": 0.0,
+        "Y": 0.0
       }
     ],
     "Annotations": [],
-    "X": -485.48550460360559,
-    "Y": 260.43377394534912,
-    "Zoom": 1.0669527078898016
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
   }
 }

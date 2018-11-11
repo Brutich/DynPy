@@ -1,7 +1,7 @@
 {
   "Uuid": "5bf052f9-c7b4-41a1-8714-1a253fd429b6",
   "IsCustomNode": true,
-  "Category": "JetPack.Revit.Elements",
+  "Category": "JetPack.Revit.Elements.Query",
   "Description": "",
   "Name": "WallType.CompoundStructure",
   "ElementResolver": {
@@ -270,7 +270,6 @@
     }
   ],
   "Dependencies": [],
-  "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,

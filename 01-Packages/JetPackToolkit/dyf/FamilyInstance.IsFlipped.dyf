@@ -1,7 +1,7 @@
 {
   "Uuid": "2c730d1b-5f35-4492-b1a1-a146d7b43b4d",
   "IsCustomNode": true,
-  "Category": "JetPack.Revit.Elements",
+  "Category": "JetPack.Revit.Elements.Query",
   "Description": "Determines the if the given family Instances are flipped. Can be used for set door handing.",
   "Name": "FamilyInstance.IsFlipped",
   "ElementResolver": {
@@ -192,7 +192,6 @@
     }
   ],
   "Dependencies": [],
-  "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
@@ -222,8 +221,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -188.0,
-        "Y": 308.0
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -232,8 +231,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 26.0,
-        "Y": 243.0
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -242,8 +241,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -187.0,
-        "Y": 247.0
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -252,8 +251,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -651.0,
-        "Y": 250.0
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -262,13 +261,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 210.0,
-        "Y": 245.0
+        "X": 0.0,
+        "Y": 0.0
       }
     ],
     "Annotations": [],
-    "X": 811.0,
-    "Y": -41.0,
+    "X": 0.0,
+    "Y": 0.0,
     "Zoom": 1.0
   }
 }

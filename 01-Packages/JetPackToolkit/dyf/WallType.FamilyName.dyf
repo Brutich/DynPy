@@ -1,7 +1,7 @@
 {
   "Uuid": "8a582ba3-a695-42d7-9055-e567c0865e38",
   "IsCustomNode": true,
-  "Category": "JetPack.Revit.Elements",
+  "Category": "JetPack.Revit.Elements.Query",
   "Description": "",
   "Name": "WallType.FamilyName",
   "ElementResolver": {
@@ -107,7 +107,6 @@
     }
   ],
   "Dependencies": [],
-  "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,

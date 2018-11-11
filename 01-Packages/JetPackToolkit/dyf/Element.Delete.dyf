@@ -193,37 +193,6 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Copyright(c) 2018, Oleg (Brutich) Zholobov\r\n# @JetPack, http://www.Oleg-Zholobov.com\r\n\r\nimport clr\r\n\r\n# Import DocumentManager and TransactionManager\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\n# Import RevitAPI\r\nclr.AddReference(\"RevitAPI\")\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\nclr.AddReference(\"System\")\r\nfrom System.Collections.Generic import List\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nuiapp = DocumentManager.Instance.CurrentUIApplication\r\napp = uiapp.Application\r\n\r\n#The inputs to this node will be stored as a list in the IN variable.\r\ndataEnteringNode = IN\r\nelems = UnwrapElement(IN[0])\r\n\r\nelemIds = []\r\n\r\nfor elem in elems:\r\n\ttry:\r\n\t\telemIds.append(elem.Id)\r\n\texcept:\r\n\t\tpass\r\n\r\n#Transaction Start\r\nTransactionManager.Instance.EnsureInTransaction(doc)\r\n\r\ntry:\r\n\tdeletedIdSet = doc.Delete(List[ElementId](elemIds))\r\n\treport = \"The {0} selected elements has been removed.\\n\".format(len(elemIds))\r\n\treport += \"And {0} dependent elements have also been removed.\".format(len(deletedIdSet)-len(elemIds))\r\nexcept Exception as exs:\r\n\treport = exs\r\n\tpass\r\n\t\t\r\n#Transaction End\r\nTransactionManager.Instance.TransactionTaskDone()\r\n\t\r\n#Assign your output to the OUT variable\r\nOUT = report",
-      "VariableInputPorts": true,
-      "Id": "ad944b23bfd3424fa1a87712d68ab9f6",
-      "Inputs": [
-        {
-          "Id": "6ee399df0be542a3b223dfb72dd1b9b2",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "8022e25225dd41b9a4c6c7ecb2a27f5a",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded IronPython script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
       "Code": "# Copyright(c) 2018, Oleg (Brutich) Zholobov\r\n# @JetPack, http://www.Oleg-Zholobov.com\r\n\r\nimport clr\r\n\r\n# Import DocumentManager and TransactionManager\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\n# Import RevitAPI\r\nclr.AddReference(\"RevitAPI\")\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nuiapp = DocumentManager.Instance.CurrentUIApplication\r\napp = uiapp.Application\r\n\r\nfrom System.Collections.Generic import *\r\n\r\n#The inputs to this node will be stored as a list in the IN variable.\r\ndataEnteringNode = IN\r\nelems = UnwrapElement(IN[0])\r\n\r\nelemIds = []\r\nnErrors = 0\r\n\r\nfor elem in elems:\r\n\ttry:\r\n\t\telemIds.append(elem.Id)\r\n\texcept AttributeError:\r\n\t\tnErrors += 1\r\n\t\tpass\r\n\r\n#Transaction Start\r\nTransactionManager.Instance.EnsureInTransaction(doc)\r\n\r\nnDeleted = 0\r\nnDeletedDependencies = 0\r\nfor item in elemIds:\r\n\ttry:\r\n\t\tdeletedIdSet = doc.Delete(item)\r\n\t\tnDeleted += 1\r\n\t\tnDeletedDependencies += len(deletedIdSet) - 1\r\n\texcept:\r\n\t\tnErrors += 1\r\n\t\tpass\r\n\t\t\r\n#Transaction End\r\nTransactionManager.Instance.TransactionTaskDone()\r\n\t\r\n#Assign your output to the OUT variable\r\nOUT = \"Successfully deleted elements: {0}.\\nDependent elements have also been removed: {1}.\\nErrors: {2}\".format(nDeleted, nDeletedDependencies, nErrors)",
       "VariableInputPorts": true,
       "Id": "a86adde6d44c4c3e9a57f1f5b6dc99e9",
@@ -298,15 +267,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": -4537.4867413899265,
+      "EyeY": 10825.012746344695,
+      "EyeZ": 570.61719934718622,
+      "LookX": 6692.3060037423675,
+      "LookY": -11385.600043322984,
+      "LookZ": -2883.634440799352,
+      "UpX": 0.649387758194934,
+      "UpY": 0.70710678118666748,
+      "UpZ": -0.27981340122780474
     },
     "NodeViews": [
       {
@@ -372,16 +341,6 @@
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "ad944b23bfd3424fa1a87712d68ab9f6",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 570.38365109056281,
-        "Y": -95.345096850545673
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Python Script",
         "Id": "a86adde6d44c4c3e9a57f1f5b6dc99e9",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -391,8 +350,8 @@
       }
     ],
     "Annotations": [],
-    "X": -626.05096322699364,
-    "Y": 288.99519766268469,
-    "Zoom": 1.78440022730309
+    "X": 983.93222144269555,
+    "Y": 367.41213662951839,
+    "Zoom": 0.9602332058021783
   }
 }

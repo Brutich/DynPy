@@ -1,7 +1,7 @@
 {
   "Uuid": "7c57705a-f16c-457e-8311-9dcec643fd8b",
   "IsCustomNode": true,
-  "Category": "JetPack X.Revit.Application",
+  "Category": "JetPack X.Revit.Application.Query",
   "Description": "",
   "Name": "Document.Current",
   "ElementResolver": {
@@ -66,7 +66,6 @@
     }
   ],
   "Dependencies": [],
-  "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
@@ -96,8 +95,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3.2025967108120312,
-        "Y": 85.734198903604039
+        "X": 0.0,
+        "Y": 0.0
       },
       {
         "ShowGeometry": true,
@@ -106,13 +105,13 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 124.0,
-        "Y": 86.0
+        "X": 0.0,
+        "Y": 0.0
       }
     ],
     "Annotations": [],
-    "X": 538.22980076403951,
-    "Y": 268.12277050564421,
-    "Zoom": 1.0298856394709861
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
   }
 }
