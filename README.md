@@ -1,2 +1,2 @@
-# JetPack
-Package for Dynamo Visual Programming
+# DyPy
+Dynamo Python Script Snippets
