@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+      <name>JetPack</name>
+  </assembly>
+  <namespaces>
+      <!--Remap Namespaces-->
+      <namespace name="JGeometry">
+          <category>JGeometry</category>
+      </namespace>
+  </namespaces>
+  <classes>
+    <!--Remap Class Names-->
+    <class name="JGeometry.Point" shortname="JGeometry.Point"/>
+  </classes>
+</doc>

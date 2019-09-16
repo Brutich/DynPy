@@ -1,0 +1,273 @@
+{
+  "Uuid": "2c730d1b-5f35-4492-b1a1-a146d7b43b4d",
+  "IsCustomNode": true,
+  "Category": "JetPack.Revit.Elements.Query",
+  "Description": "Determines the if the given family Instances are flipped. Can be used for set door handing.",
+  "Name": "FamilyInstance.IsFlipped",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Autodesk.Revit.DB.Document": {
+        "Key": "Autodesk.Revit.DB.Document",
+        "Value": null
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\nclr.AddReference(\"RevitNodes\")\nimport Revit\nclr.ImportExtensions(Revit.Elements)\n\n#input assigned the IN variable\nelement = UnwrapElement(IN[0])\n\n#output assigned the OUT variable\nOUT = element.FacingFlipped",
+      "VariableInputPorts": true,
+      "Id": "d2616047b34b4908a63f6cff3968e67a",
+      "Inputs": [
+        {
+          "Id": "2e025038480a49849ef68eec77414d56",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b85fef0cbbe345159b0c5938401f56c0",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.Xor@bool,bool",
+      "Id": "1a25df29fb534ef4987d0726736f5d49",
+      "Inputs": [
+        {
+          "Id": "0a6b5c5582524a1490080443dd28bdb3",
+          "Name": "a",
+          "Description": "A boolean.\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1425d31d2949411c8763481fb288371d",
+          "Name": "b",
+          "Description": "A boolean.\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a36fe1bdca754deaa03d5704f44a61f9",
+          "Name": "bool",
+          "Description": "Boolean result.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Boolean XOR: Returns true if and only if exactly one of the inputs is true.\n\nMath.Xor (a: bool, b: bool): bool"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\nclr.AddReference(\"RevitNodes\")\nimport Revit\nclr.ImportExtensions(Revit.Elements)\n\n#input assigned the IN variable\nelement = UnwrapElement(IN[0])\n\n#output assigned the OUT variable\nOUT = element.HandFlipped",
+      "VariableInputPorts": true,
+      "Id": "5f1a7194560f4eb787c759f894b42df7",
+      "Inputs": [
+        {
+          "Id": "5eca14edbb774285becfd3b8121d808d",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "51454f2b90024e40b3c84b299c074222",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "familyInstance",
+        "TypeName": "Revit.Elements.FamilyInstance",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "bc3b707e75b845f99b541766c345f1ba",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "19ce7d4f9af94ec4bf8453947795285c",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "bool",
+      "Id": "b2455a0336a64766869d5a1c42b1e996",
+      "Inputs": [
+        {
+          "Id": "f78ea1dccd3b40f79b1343b3cb2be472",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b85fef0cbbe345159b0c5938401f56c0",
+      "End": "1425d31d2949411c8763481fb288371d",
+      "Id": "be54997971d34cdb9f279fc20e4cf193"
+    },
+    {
+      "Start": "a36fe1bdca754deaa03d5704f44a61f9",
+      "End": "f78ea1dccd3b40f79b1343b3cb2be472",
+      "Id": "208ab985c9a946c88e929e161d56d706"
+    },
+    {
+      "Start": "51454f2b90024e40b3c84b299c074222",
+      "End": "0a6b5c5582524a1490080443dd28bdb3",
+      "Id": "d8c18289930a4b509164fb0560728fec"
+    },
+    {
+      "Start": "19ce7d4f9af94ec4bf8453947795285c",
+      "End": "5eca14edbb774285becfd3b8121d808d",
+      "Id": "61915dd1d4e94a66a9d54ef1e06049bd"
+    },
+    {
+      "Start": "19ce7d4f9af94ec4bf8453947795285c",
+      "End": "2e025038480a49849ef68eec77414d56",
+      "Id": "d1062965f442424b8e02e58b0add6020"
+    }
+  ],
+  "Dependencies": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.1.5055",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "d2616047b34b4908a63f6cff3968e67a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Math.Xor",
+        "Id": "1a25df29fb534ef4987d0726736f5d49",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "5f1a7194560f4eb787c759f894b42df7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "bc3b707e75b845f99b541766c345f1ba",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "b2455a0336a64766869d5a1c42b1e996",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
