@@ -1,2 +1,2 @@
-# DyPy
+# DynPy
 Dynamo Python Script Snippets
