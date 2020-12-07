@@ -13,7 +13,7 @@ from Autodesk.Revit.DB import *
 import System
 from System.Collections.Generic import *
 
-# Import ToDSType(bool) extension method
+# Import ToProtoType(bool) extension method
 clr.AddReference("RevitNodes")
 import Revit
 clr.ImportExtensions(Revit.GeometryConversion)
